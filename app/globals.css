@@ -3,3 +3,16 @@
 @theme inline {
   --font-sans: var(--font-josefin);
 }
+
+/*
+  Tipografía fluida.
+  ≤ 1280 px  →  16 px  (móvil y desktop normal, sin cambios)
+  1280–1920 px →  escala linealmente de 16 px a 24 px
+  ≥ 1920 px  →  24 px  (ultrawide y pantallas grandes, todo 1.5× más grande)
+
+  Al usar rem en el componente, TODOS los textos y espaciados
+  escalan de forma proporcional sin tocar ningún otro valor.
+*/
+html {
+  font-size: clamp(16px, 1.25vw, 24px);
+}
