@@ -14,5 +14,5 @@
   escalan de forma proporcional sin tocar ningún otro valor.
 */
 html {
-  font-size: clamp(16px, 1.25vw, 24px);
+  font-size: clamp(17.6px, 1.375vw, 26.4px);
 }
