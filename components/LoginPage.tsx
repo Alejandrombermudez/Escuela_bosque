@@ -117,7 +117,10 @@ export default function LoginPage() {
             <div className="h-px flex-1 bg-white/30" />
           </div>
 
-          <button className="flex w-full items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 py-2.5 transition-colors hover:bg-white/20">
+          <button
+            onClick={() => router.push("/roles")}
+            className="flex w-full items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 py-2.5 transition-colors hover:bg-white/20"
+          >
             <Image src="/images/logo-google.png" alt="Google" width={16} height={16} />
             {/* 0.625rem = 10px @ 16px base */}
             <span className="text-[0.625rem] font-bold text-white">Continúa con google</span>
@@ -125,9 +128,13 @@ export default function LoginPage() {
 
           <p className="mt-6 text-[0.625rem] font-normal text-white/80">
             ¿No tienes cuenta?{" "}
-            <a href="#" className="font-bold text-white hover:underline">
+            <button
+              type="button"
+              onClick={() => router.push("/create-profile")}
+              className="font-bold text-white hover:underline"
+            >
               Créala aquí
-            </a>
+            </button>
           </p>
         </div>
       </div>
@@ -238,16 +245,23 @@ export default function LoginPage() {
               <div className="h-px flex-1 bg-gray-200" />
             </div>
 
-            <button className="flex w-full items-center justify-center gap-2 rounded-full border border-gray-200 py-2.5 transition-colors hover:bg-gray-50">
+            <button
+              onClick={() => router.push("/roles")}
+              className="flex w-full items-center justify-center gap-2 rounded-full border border-gray-200 py-2.5 transition-colors hover:bg-gray-50"
+            >
               <Image src="/images/logo-google.png" alt="Google" width={18} height={18} />
               <span className="text-[0.625rem] font-bold text-gray-700">Continúa con google</span>
             </button>
 
             <p className="mt-6 text-center text-[0.625rem] font-normal text-gray-500">
               ¿No tienes cuenta?{" "}
-              <a href="#" className="font-bold text-gray-900 hover:underline">
+              <button
+                type="button"
+                onClick={() => router.push("/create-profile")}
+                className="font-bold text-gray-900 hover:underline"
+              >
                 Créala aquí
-              </a>
+              </button>
             </p>
 
           </div>
