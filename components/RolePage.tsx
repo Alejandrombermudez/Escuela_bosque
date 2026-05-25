@@ -99,7 +99,7 @@ export default function RolePage() {
     if (!selectedRole) return;
     // TODO: guardar rol seleccionado y navegar a la siguiente pantalla
     console.log("Rol seleccionado:", selectedRole);
-    router.push("/"); // placeholder hasta que exista la siguiente pantalla
+    router.push("/create-profile");
   };
 
   return (
