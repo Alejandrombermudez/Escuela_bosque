@@ -29,6 +29,8 @@ export default function InstallPrompt() {
     if (window.matchMedia("(display-mode: standalone)").matches) return;
     // iOS standalone también via navigator.standalone
     if ((navigator as { standalone?: boolean }).standalone) return;
+    // Si el usuario ya lo descartó en esta sesión o en sesiones anteriores → no mostrar
+    if (localStorage.getItem("pwa-prompt-dismissed")) return;
 
     const ua = navigator.userAgent;
     const isIOS = /iphone|ipad|ipod/i.test(ua) && !/chrome/i.test(ua);
@@ -59,7 +61,9 @@ export default function InstallPrompt() {
     if (!deferredPrompt) return;
     await deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
-    if (outcome === "accepted") setVisible(false);
+    // Tanto si acepta como si cancela el diálogo del sistema, no volver a mostrar
+    localStorage.setItem("pwa-prompt-dismissed", "1");
+    setVisible(false);
   };
 
   // ── iOS ───────────────────────────────────────────────────────────────────
@@ -86,7 +90,10 @@ export default function InstallPrompt() {
             </p>
           </div>
           <button
-            onClick={() => setVisible(false)}
+            onClick={() => {
+              localStorage.setItem("pwa-prompt-dismissed", "1");
+              setVisible(false);
+            }}
             aria-label="Cerrar"
             className="ml-1 text-white/50 hover:text-white text-lg leading-none"
           >
