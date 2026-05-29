@@ -3,11 +3,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { saveProfile } from "@/lib/profile";
+import type { RoleId } from "@/lib/courses";
 
 // ── Tipos ─────────────────────────────────────────────────────────────────────
 
 interface Role {
-  id: string;
+  id: RoleId;
   title: string;
   desc: string;
   icon: string;
@@ -92,14 +94,13 @@ function RoleCard({
 // ── Componente principal ───────────────────────────────────────────────────────
 
 export default function RolePage() {
-  const [selectedRole, setSelectedRole] = useState<string | null>(null);
+  const [selectedRole, setSelectedRole] = useState<RoleId | null>(null);
   const router = useRouter();
 
   const handleContinue = () => {
     if (!selectedRole) return;
-    // TODO: guardar rol seleccionado y navegar a la siguiente pantalla
-    console.log("Rol seleccionado:", selectedRole);
-    router.push("/"); // placeholder hasta que exista la siguiente pantalla
+    saveProfile({ role: selectedRole });
+    router.push("/create-profile");
   };
 
   return (

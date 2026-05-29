@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { saveProfile } from "@/lib/profile";
 
 export default function CreateProfilePage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -14,9 +15,8 @@ export default function CreateProfilePage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: guardar perfil y navegar a la siguiente pantalla
-    console.log("Perfil guardado:", { firstName, lastName, email });
-    router.push("/"); // placeholder hasta que exista la siguiente pantalla
+    saveProfile({ firstName, lastName, email });
+    router.push("/home");
   };
 
   return (

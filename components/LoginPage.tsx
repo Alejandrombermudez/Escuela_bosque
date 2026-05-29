@@ -13,8 +13,9 @@ export default function LoginPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: reemplazar con autenticación real
-    router.push("/roles");
+    // TODO: reemplazar con autenticación real. Home redirige a /roles si aún
+    // no se eligió un rol (usuario que no completó el onboarding).
+    router.push("/home");
   };
 
   return (
@@ -118,7 +119,7 @@ export default function LoginPage() {
           </div>
 
           <button
-            onClick={() => router.push("/roles")}
+            onClick={() => router.push("/home")}
             className="flex w-full items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 py-2.5 transition-colors hover:bg-white/20"
           >
             <Image src="/images/logo-google.png" alt="Google" width={16} height={16} />
@@ -246,7 +247,7 @@ export default function LoginPage() {
             </div>
 
             <button
-              onClick={() => router.push("/roles")}
+              onClick={() => router.push("/home")}
               className="flex w-full items-center justify-center gap-2 rounded-full border border-gray-200 py-2.5 transition-colors hover:bg-gray-50"
             >
               <Image src="/images/logo-google.png" alt="Google" width={18} height={18} />
@@ -257,7 +258,7 @@ export default function LoginPage() {
               ¿No tienes cuenta?{" "}
               <button
                 type="button"
-                onClick={() => router.push("/create-profile")}
+                onClick={() => router.push("/roles")}
                 className="font-bold text-gray-900 hover:underline"
               >
                 Créala aquí
